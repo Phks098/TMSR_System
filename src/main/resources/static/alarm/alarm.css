@@ -1,0 +1,33 @@
+.ellipsis {
+    width: 100%;
+    /* or any other value */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.voteDiv {
+    background-color: white;
+    /* Default background color */
+    transition: background-color 0.3s;
+    /* Optional: Smooth color transition */
+    user-select: none;
+}
+
+.voteDiv:hover {
+    background-color: #e0e0e0;
+    /* Background color on hover */
+}
+.team_title,
+.team_noteInfo{
+    font-family: "여기어때 잘난체 OTF";
+    
+}
+
+.team_noteInfo{
+    margin-top: 5px;
+    font-size: 9px;
+}
+.voteDiv{
+    margin-top: 5px;
+}

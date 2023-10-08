@@ -9,18 +9,26 @@ import org.springframework.web.servlet.view.RedirectView;
 @Controller
 public class MyController {
    
-    @GetMapping("/")
-    public String tt() {
-        return "grander/index";
-    }
+  
    
     @GetMapping("/test")
     public String test(){
         return "test";
     }
    
-    @GetMapping("/index")
+    @GetMapping("/")
     public String index(){
         return "index";
+ 
+    }
+
+    @GetMapping("/table")
+    public String teamTable(){
+        return "grander/teamTable";
+    }
+
+    @GetMapping("/alarm")
+    public String alaram(){
+        return "grander/alarm";
     }
 }

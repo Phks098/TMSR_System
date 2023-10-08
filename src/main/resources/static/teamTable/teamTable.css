@@ -1,0 +1,57 @@
+.container {
+    display: inline-flex;
+    justify-content: center;
+}
+
+
+table,
+.blue-box {
+    border-collapse: collapse;
+    width: 300px;
+    margin: 10px;
+    text-align: center;
+
+}
+
+.blue-box {
+    height: 365px;
+    background-color: white;
+    margin: 10px;
+    border: 1px solid black;
+    color: black;
+    display: inline-table;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.calendar-control {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px 0;
+}
+
+th{
+    padding: 10px;
+    text-align: center;
+    font-size: 15px;
+    color:cornflowerblue;
+    font-family: "여기어때 잘난체 OTF";
+}
+
+td {
+    padding: 10px;
+    vertical-align: middle;
+    text-align: center;
+    font-size: 10px;
+    font-family: "여기어때 잘난체 OTF";
+}
+.btn-outline-secondary{
+    color: cornflowerblue;
+    font-size: 10px;
+}
+
+.plusBtn{
+    font-family: "여기어때 잘난체 OTF";
+}
