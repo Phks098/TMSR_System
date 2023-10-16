@@ -13,7 +13,7 @@ public class MyController {
    
     @GetMapping("/test")
     public String test(){
-        return "test";
+        return "grander/Notice/general_notice";
     }
    
     @GetMapping("/")
@@ -31,4 +31,5 @@ public class MyController {
     public String alaram(){
         return "grander/alarm";
     }
+
 }

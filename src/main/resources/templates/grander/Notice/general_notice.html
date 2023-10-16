@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>공지사항</title>
+    <link rel="stylesheet" th:href="@{notice/general_notice/general_notice.css}" />
+
+</head>
+
+<body>
+    <div th:fragment="general_notice">
+
+
+        <div class="notice">
+            <link rel="stylesheet" th:href="@{notice/general_notice/general_notice.css}" />
+
+            <div class="notice-title" id="noticeTitle"></div>
+            <div class="notice-content" id="noticeContent"></div>
+        </div>
+
+        <script>
+            // 선택된 공지 유형에 따라서 출력되는 변수도 달라야한다.
+
+            // 공지 제목과 내용을 변수로 선언
+            var noticeTitle = "[공지] 프로젝트 추후 계획입니다.";
+            var noticeContent = `
+07월 목표: 주제 선정 및 요구분석 정리
+
+07월 1주차: 프로젝트 주제 선정 회의
+07월 2주차: 계획서 작성 및 역할 분담 정리
+07월 3주차: 계획서 작성 및 역할 분담 정리
+07월 4주차: 제안 발표 연습 및 발표자료 정리
+`;
+
+            // 공지 제목과 내용을 HTML 요소에 적용
+            document.getElementById('noticeTitle').textContent = noticeTitle;
+            document.getElementById('noticeContent').textContent = noticeContent;
+        </script>
+    </div>
+</body>
+
+</html>
