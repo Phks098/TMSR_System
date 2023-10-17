@@ -13,12 +13,12 @@ public class MyController {
    
     @GetMapping("/test")
     public String test(){
-        return "grander/Notice/general_notice";
+        return "grander/fullcalendar/full-height";
     }
    
     @GetMapping("/")
     public String index(){
-        return "index";
+        return "totalpage/index";
  
     }
 
@@ -27,9 +27,13 @@ public class MyController {
         return "grander/teamTable";
     }
 
-    @GetMapping("/alarm")
+    @GetMapping("/input")
     public String alaram(){
-        return "grander/alarm";
+        return "grander/modal_page/schedule_input";
     }
+     @GetMapping("/main")
+     public String main(){
+        return "totalpage/main";
+     }
 
 }
