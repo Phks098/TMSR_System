@@ -18,7 +18,8 @@ public class DemoApplication implements CommandLineRunner {
     private ScheduleService scheduleService;
 	
 	public static void main(String[] args) {
-		SpringApplication.run(DemoApplication.class, args);
+		SpringApplication.run(DemoApplication.class, args);	
+		System.out.println("s");
 	}
 
 	@Override

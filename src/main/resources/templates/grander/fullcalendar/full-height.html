@@ -27,23 +27,126 @@
           </div>
           <div class="modal-body">
             <p id="eventDetails"></p>
-            <div th:replace="grander/alarm :: alarm"></div>
+            <div class="form-group">
+              <label>스케쥴 제목:</label>
+              <input type="text" class="form-control" placeholder="제목을 입력하세요">
+            </div>
+            <div class="form-group">
+              <label>스케쥴 시작:</label>
+              <input type="datetime-local" class="form-control start-date">
+              <label>스케쥴 종료:</label>
+              <input type="datetime-local" class="form-control end-date">
+            </div>
+            <div class="form-check">
+              <input type="checkbox" class="form-check-input" id="allDayCheck">
+              <label class="form-check-label">스케쥴 종일</label>
+            </div>
+            <div class="form-check">
+              <input type="checkbox" class="form-check-input" id="repeatCheck">
+              <label class="form-check-label">반복 스케쥴 여부</label>
+              <select class="form-control mt-2" id="repeatOptions" style="display:none;">
+                <option>매일</option>
+                <option>주마다</option>
+                <option>한달마다</option>
+                <option>년도마다</option>
+              </select>
+            </div>
+            <div class="form-group mt-2">
+              <label>스케쥴 내용:</label>
+              <textarea class="form-control" rows="3"></textarea>
+            </div>
+            <div class="form-group">
+              <label>스케쥴 중요도:</label>
+              <select class="form-control">
+                <option>높음</option>
+                <option>보통</option>
+                <option>낮음</option>
+              </select>
+            </div>
+
           </div>
+          <!-- Modal footer -->
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary" data-dismiss="modal">저장</button>
+            <button type="button" class="btn btn-danger" data-dismiss="modal">취소</button>
           </div>
         </div>
       </div>
     </div>
+
+
     <!-- Bootstrap 5 JS and Popper.js -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 
+    
+    <script>
+      $(document).ready(function () {
+        let now = new Date().toISOString().slice(0, 16);
+        
+        $('.start-date, .end-date').val();
+
+        $('#allDayCheck').on('change', function () {
+          if ($(this).is(':checked')) {
+            $('.start-date, .end-date').attr('type', 'date').val(now.slice(0, 10));
+          } else {
+            $('.start-date, .end-date').attr('type', 'datetime-local').val(now);
+          }
+        });
+
+        $('#repeatCheck').on('change', function () {
+          if ($(this).is(':checked')) {
+            $('#repeatOptions').show();
+          } else {
+            $('#repeatOptions').hide();
+          }
+        });
+
+        $('#repeatCheck').on('change', function () {
+          if ($(this).is(':checked')) {
+            $('#repeatOptions').show();
+          } else {
+            $('#repeatOptions').hide();
+          }
+        });
+
+        // 추가된 코드 시작
+        $('.btn-primary').on('click', function () {
+          let title = $('.modal-body input[type="text"]').val();
+          let startDate = $('.start-date').val();
+          let endDate = $('.end-date').val();
+          let isAllDay = $('#allDayCheck').is(':checked');
+          let isRepeat = $('#repeatCheck').is(':checked');
+          let repeatOption = $('#repeatOptions').val();
+          let content = $('.modal-body textarea').val();
+          let importance = $('.modal-body select:not(#repeatOptions)').val();
+
+          console.log("스케쥴 제목:", title);
+          console.log("스케쥴 시작:", startDate);
+          console.log("스케쥴 종료:", endDate);
+          console.log("스케쥴 종일 여부:", isAllDay);
+          console.log("반복 스케쥴 여부:", isRepeat);
+          if (isRepeat) {
+            console.log("반복 옵션:", repeatOption);
+          }
+          console.log("스케쥴 내용:", content);
+          console.log("스케쥴 중요도:", importance);
+          $('#eventModal').modal('hide');
+          console.log(now);
+      });
+
+
+      $('.btn-danger').on('click', function(){
+        $('#eventModal').modal('hide');
+      });
+      });
+    </script>
     <script th:src="@{fullcalendar/index.global.js}"></script>
     <script th:src="@{fullcalendar/scaduls.js}"></script>
   </div>
+
 </body>
 
 </html>
