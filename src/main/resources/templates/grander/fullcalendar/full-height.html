@@ -81,6 +81,68 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 
+    
+    <script>
+      $(document).ready(function () {
+        let now = new Date().toISOString().slice(0, 16);
+        
+        $('.start-date, .end-date').val();
+
+        $('#allDayCheck').on('change', function () {
+          if ($(this).is(':checked')) {
+            $('.start-date, .end-date').attr('type', 'date').val(now.slice(0, 10));
+          } else {
+            $('.start-date, .end-date').attr('type', 'datetime-local').val(now);
+          }
+        });
+
+        $('#repeatCheck').on('change', function () {
+          if ($(this).is(':checked')) {
+            $('#repeatOptions').show();
+          } else {
+            $('#repeatOptions').hide();
+          }
+        });
+
+        $('#repeatCheck').on('change', function () {
+          if ($(this).is(':checked')) {
+            $('#repeatOptions').show();
+          } else {
+            $('#repeatOptions').hide();
+          }
+        });
+
+        // 추가된 코드 시작
+        $('.btn-primary').on('click', function () {
+          let title = $('.modal-body input[type="text"]').val();
+          let startDate = $('.start-date').val();
+          let endDate = $('.end-date').val();
+          let isAllDay = $('#allDayCheck').is(':checked');
+          let isRepeat = $('#repeatCheck').is(':checked');
+          let repeatOption = $('#repeatOptions').val();
+          let content = $('.modal-body textarea').val();
+          let importance = $('.modal-body select:not(#repeatOptions)').val();
+
+          console.log("스케쥴 제목:", title);
+          console.log("스케쥴 시작:", startDate);
+          console.log("스케쥴 종료:", endDate);
+          console.log("스케쥴 종일 여부:", isAllDay);
+          console.log("반복 스케쥴 여부:", isRepeat);
+          if (isRepeat) {
+            console.log("반복 옵션:", repeatOption);
+          }
+          console.log("스케쥴 내용:", content);
+          console.log("스케쥴 중요도:", importance);
+          $('#eventModal').modal('hide');
+          console.log(now);
+      });
+
+
+      $('.btn-danger').on('click', function(){
+        $('#eventModal').modal('hide');
+      });
+      });
+    </script>
     <script th:src="@{fullcalendar/index.global.js}"></script>
     <script th:src="@{fullcalendar/scaduls.js}"></script>
     <script>
